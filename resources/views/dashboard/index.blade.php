@@ -55,18 +55,21 @@
   					}],
   					xAxes: [{
   						ticks: {
-  							callback: (value) => value
+  							callback: (value) => value,
   						}
   					}]
   				},
   				tooltips: {
   					callbacks: {
-  						label: function(item, data) {
-  							var label = data.datasets[item.datasetIndex].label || '';
+              title: function(item, data) {
+                return titles[item[0].label];
+              },
+              label: function(item, data) {
+                var label = data.datasets[item.datasetIndex].label || '';
   							var yLabel = item.yLabel;
                 var content = '';
-  							if (data.datasets.length > 1) {
-  								content += '<span class="popover-body-label mr-auto"> ' + label + '</span>';
+                if (data.datasets.length > 1) {
+                	content += '<span class="popover-body-label mr-auto"> ' + label + '</span>';
   							}
 	              content += '<span class="popover-body-value">' + yLabel + '</span>';
   							return content;
