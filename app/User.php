@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\UserProfile;
+use App\Models\SectionQuestionAnswer;
 use Hash, Auth;
 
 class User extends Authenticatable
@@ -18,7 +19,7 @@ class User extends Authenticatable
     * @var array
     */
     protected $fillable = [
-        'name', 'email', 'password', 'last_activity', 'locked', 'username'
+        'name', 'email', 'password', 'last_activity', 'locked', 'username', 'taken_survey'
     ];
 
     /**
@@ -32,7 +33,7 @@ class User extends Authenticatable
 
     public function profile()
     {
-        return $this->hasOne('App\Models\UserProfile', 'user_id', 'id');
+        return $this->hasOne(UserProfile::class, 'user_id', 'id');
     }
 
     public function updateBasicInfo($request)
@@ -61,6 +62,11 @@ class User extends Authenticatable
           $userProfile->cover = 'storage/'. $path;
           $userProfile->save();
         }
+    }
+
+    public function answers()
+    {
+        return $this->hasOne(SectionQuestionAnswer::class, 'user_id', 'id');
     }
 
 }

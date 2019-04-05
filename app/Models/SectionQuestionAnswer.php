@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class SectionQuestionAnswer extends Model
 {
-    //
+    protected $guarded = [];
 }

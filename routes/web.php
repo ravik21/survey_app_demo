@@ -18,6 +18,7 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function(){
+    include('survey.php');
     Route::get('/', 'Dashboard\DefaultController@index');
     Route::prefix('dashboard')->group(function(){
       Route::get('/', 'Dashboard\DefaultController@index');

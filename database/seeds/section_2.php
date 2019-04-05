@@ -3,7 +3,7 @@
 $questions = [
   [
     'name' => 'I have felt impatien',
-    'section_id' => '1',
+    'section_id' => '2',
     'type' => 'option',
     'description' => '',
     'required'   => true,
@@ -42,7 +42,7 @@ $questions = [
   ],
   [
     'name' => 'I have felt upbeat and optimistic',
-    'section_id' => '1',
+    'section_id' => '2',
     'type' => 'option',
     'description' => '',
     'required'   => true,
@@ -81,7 +81,7 @@ $questions = [
   ],
   [
     'name' => 'I have found myself worrying about my problems',
-    'section_id' => '1',
+    'section_id' => '2',
     'type' => 'option',
     'description' => '',
     'required'   => true,
@@ -120,7 +120,7 @@ $questions = [
   ],
   [
     'name' => 'I have had frequent urges to smoke',
-    'section_id' => '1',
+    'section_id' => '2',
     'type' => 'option',
     'description' => '',
     'required'   => true,
@@ -159,7 +159,7 @@ $questions = [
   ],
   [
     'name' => 'I have felt calm lately',
-    'section_id' => '1',
+    'section_id' => '2',
     'type' => 'option',
     'description' => '',
     'required'   => true,

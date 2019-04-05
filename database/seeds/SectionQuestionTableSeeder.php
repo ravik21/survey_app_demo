@@ -13,6 +13,9 @@ class SectionQuestionTableSeeder extends Seeder
      */
     public function run()
     {
+        SectionQuestion::truncate();
+        SectionQuestionOption::truncate();
+
         $files = [
            ['sections'=> '1', 'file' => 'section_1'],
            ['sections'=> '2', 'file' => 'section_2'],
