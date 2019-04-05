@@ -16,13 +16,11 @@ class DefaultController extends Controller
 
     public function handleProviderCallback($driver)
     {
-      // try {
+      try {
         $user = Socialite::driver($driver)->user();
-
-        print_r($user);die;
-      // } catch (\Exception $e) {
-      //   return redirect('/login');
-      // }
+      } catch (\Exception $e) {
+        return redirect('/login');
+      }
 
       $existingUser = User::where('email', $user->email)->first();
 
@@ -47,6 +45,6 @@ class DefaultController extends Controller
         auth()->login($newUser, true);
       }
 
-      return redirect()->to('/dashboard');
+      return redirect()->to('/take-survey');
     }
 }

@@ -1,3 +1,6 @@
+@php
+  $surveyTaken = Auth::user()->taken_survey;
+@endphp
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
 
@@ -63,6 +66,13 @@
                     </a>
                 </li>
                 @endrole
+                <li class="nav-item {{ $surveyTaken ? 'not-allowed' : ''}}">
+                    <a class="nav-link" href="{{ $surveyTaken ? '#' : url('/take-survey')}}">
+                      <i class="fa fa-external-link-alt text-green"></i> {{ __('Take Survey') }} &nbsp;
+                    </a>
+                    <small class="nav-link" style="margin-left: 20px;margin-top: -15px;"><b>{{ $surveyTaken ? '(Already Taken)': ''}}</b></small>
+                </li>
+
                 @auth()
                 <li class="nav-item">
                   <a class="nav-link" href=""
@@ -77,7 +87,7 @@
             <!-- Divider -->
             <hr class="my-3">
             <!-- Heading -->
-            <h6 class="navbar-heading text-muted">Demo</h6>
+            <h6 class="navbar-heading text-muted">Demo Survey App</h6>
                 @if(session()->exists('adminId'))
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/dashboard/users/'.session('adminId').'/login-as') }}">
