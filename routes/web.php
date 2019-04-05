@@ -24,6 +24,8 @@ Route::middleware('auth')->group(function(){
       Route::get('/', 'Dashboard\DefaultController@index');
 
       include('profile.php');
+      include('user.php');
+      include('roles.php');
     });
 });
 

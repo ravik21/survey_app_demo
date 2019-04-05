@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
-use App\Models\Role;
-use App\Models\RoleUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -16,18 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        $users = User::join('role_user', 'role_user.user_id','users.id')
-                      ->select('users.*');
-
-        if ($request->role_id){
-          $users = $users->where('role_user.role_id', $request->role_id);
-        }
-
-        if($request->name){
-          $users = $users->where('users.name', 'like', "%{$request->name}%");
-        }
-
-        $data['selected_role'] = ($request->role_id) ? $request->role_id : '';
+        $users = User::select('users.*');
         $data['users'] = $users->groupBy('email')->get();
         // echo "<pre>"; print_r($data); die;
         return view('users.index',$data);
