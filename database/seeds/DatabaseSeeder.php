@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(SectionTableSeeder::class);
-        // $this->call(SectionQuestionTableSeeder::class);
+        $this->call(SectionTableSeeder::class);
+        $this->call(SectionQuestionTableSeeder::class);
 
         $admin = Role::where('name','admin')->first();
         $permissions = Permission::get();

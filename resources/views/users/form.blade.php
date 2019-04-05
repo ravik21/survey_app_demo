@@ -2,14 +2,13 @@
 
 @section('content')
 @php
-    $profile = $user->profile;
+    $profile = $user && $user->profile ? $user->profile: false;
     $avatar = '';
     if ($profile && $profile->avatar) {
         $avatar = asset($profile->avatar);
     }
 @endphp
     <div class="col-xl-12 order-xl-1 mt-3">
-
         <div class="card bg-secondary shadow">
             <div class="card-header bg-white border-0">
                 <div class="align-items-center">

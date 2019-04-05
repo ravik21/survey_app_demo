@@ -4,13 +4,7 @@
     <div class="pl-lg-4">
         <input type="hidden" name="form_type" value="basic_info">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label class="form-control-label" for="input-username">{{ __('Username') }}</label>
-              <input type="text" name="username" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{ ($user) ? $user->username : '' }}">
-            </div>
-          </div>
-          <div class="col-lg-6">
+          <div class="col-lg-12">
             <div class="form-group">
               <label class="form-control-label" for="input-email">{{ __('Email address') }}</label>
               <input type="email" name="email" id="input-email" class="form-control form-control-alternative" placeholder="Email address" value="{{ ($user) ? $user->email : '' }}">

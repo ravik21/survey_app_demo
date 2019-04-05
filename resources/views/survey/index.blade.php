@@ -7,8 +7,11 @@
       <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
               <div class="col-lg-7 col-md-8">
-                  <h1 class="text-white">{{ $section ? $section->name : 'Survey has already been taken!' }}</h1>
-                  <h3 class="text-white">{{ $section ? 'Section - ' .$section->id : 'Please go to the dashboard' }}</h3>
+                  <h1 class="text-white">{{ $section ? $section->name : 'Survey has been completed' }}</h1>
+                  <h3 class="text-white">
+                    {{ $section ? 'Section - ' .$section->id : 'Please go to the dashboard' }}
+                    <a href="{{ url('/dashboard')}}" class="text-white"><i class="fa fa-external-link-alt"></i> </a>
+                  </h3>
               </div>
           </div>
       </div>

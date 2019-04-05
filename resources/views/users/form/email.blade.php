@@ -27,21 +27,20 @@
               <input type="email" name="email" id="input-email" class="form-control form-control-alternative" placeholder="Email address" value="{{ ($user) ? $user->email : '' }}">
             </div>
           </div>
-        </div>
-
-        <div class="row">
           <div class="col-lg-6">
-              <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ ($user) ? $user->name : '' }}" required autofocus>
-                @if ($errors->has('name'))
-                <span class="invalid-feedback" role="alert">
-                  <strong>{{ $errors->first('name') }}</strong>
-                </span>
-                @endif
-              </div>
+            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+              <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
+              <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ ($user) ? $user->name : '' }}" required autofocus>
+              @if ($errors->has('name'))
+              <span class="invalid-feedback" role="alert">
+                <strong>{{ $errors->first('name') }}</strong>
+              </span>
+              @endif
+            </div>
           </div>
         </div>
+
+
         <div class="text-center">
             <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
         </div>

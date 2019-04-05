@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
-use App\Models\Role;
-use App\Models\RoleUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
@@ -16,18 +14,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        $users = User::join('role_user', 'role_user.user_id','users.id')
-                      ->select('users.*');
-
-        if ($request->role_id){
-          $users = $users->where('role_user.role_id', $request->role_id);
-        }
-
-        if($request->name){
-          $users = $users->where('users.name', 'like', "%{$request->name}%");
-        }
-
-        $data['selected_role'] = ($request->role_id) ? $request->role_id : '';
+        $users = User::select('users.*')->where('taken_survey', 0);
         $data['users'] = $users->groupBy('email')->get();
         // echo "<pre>"; print_r($data); die;
         return view('users.index',$data);
@@ -52,14 +39,8 @@ class UserController extends Controller
           ],
           'password' => [
             'old_password'          => 'required',
-            'password'              => 'required|min:8',
+            'password'              => 'required|min:6',
             'password_confirmation' => 'required'
-          ],
-          'more_info' => [
-            'company'     => 'required',
-            'designation' => 'required',
-            'education'   => 'required',
-            'status'      => 'required',
           ],
           'avatar' => [
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -79,16 +60,7 @@ class UserController extends Controller
 
         if ($request->form_type == "password") {
           $updatePassword = $user->where('id', Auth::user()->id)->first();
-
-          if (!password_verify($request->old_password , $updatePassword->password)) {
-            return back()->with('password-fail', 'Old Password provided is invalid.');
-          }
-
           $user->updatePassword($request);
-        }
-
-        if ($request->form_type == "more_info") {
-          $user->updateProfile($request);
         }
 
         if ($request->form_type == "avatar") {

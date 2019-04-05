@@ -36,7 +36,7 @@
             <div class="container-fluid d-flex align-items-center mt-4">
               <div class="row" style="width:100%">
                 <div class="col-md-6">
-                  <h1 class="display-2 text-white">Hello {{auth()->user()->name}}</h1>
+                  <h1 class="display-2 text-white">Hello {{auth()->user()->email}},</h1>
                 </div>
                 <div class="col-sm-6" style="text-align: right;min-height:45px;">
                   <a href="{{ url('dashboard/profile/cover/upload') }}" class="btn btn-sm btn-success cover-btn"><i class="fa fa-plus"></i></a>
@@ -63,7 +63,7 @@
         </div>
         <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        @yield('extra_scripts')
         @stack('js')
         <script src="{{ asset('assets/js/app.js') }}"></script>
+        @yield('extra_scripts')
 </html>
