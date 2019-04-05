@@ -12,7 +12,7 @@
                 <div class="card-header bg-transparent pb-3">
                     <div class="text-muted text-center mt-2 mb-4"><small>{{ __('Sign up with') }}</small></div>
                     <div class="text-center">
-                        <a href="#" class="btn btn-neutral btn-icon">
+                        <a href="{{ url('/login-via/google') }}" class="btn btn-neutral btn-icon">
                             <span class="btn-inner--icon"><img src="{{ asset('assets/img/icons/common/google.svg') }}"></span>
                             <span class="btn-inner--text hidden-md">{{ __('Google') }}</span>
                         </a>
