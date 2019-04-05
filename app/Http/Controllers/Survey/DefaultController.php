@@ -12,14 +12,11 @@ class DefaultController extends Controller
 {
     public function index($section = 1)
     {
-        $user            = Auth::user();
-
-        $answers         = $user->answers();
-
-        $sectionAnswered = clone $answers;
-        $sectionAnswered = $answers->groupBy('section_id')->pluck('section_id')->toArray();
-
-        $section        = Section::whereNotIn('id', $sectionAnswered)->first();
+        $user             = Auth::user();
+        $answers          = $user->answers();
+        $sectionAnswered  = clone $answers;
+        $sectionAnswered  = $answers->groupBy('section_id')->pluck('section_id')->toArray();
+        $section          = Section::whereNotIn('id', $sectionAnswered)->first();
 
         return view('survey.index', ['section' => $section]);
     }
