@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use App\Model\UserProfile;
+use App\User;
 
 class DefaultController extends Controller
 {
