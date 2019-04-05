@@ -63,7 +63,7 @@
         </div>
         <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-        @yield('extra_scripts')
         @stack('js')
         <script src="{{ asset('assets/js/app.js') }}"></script>
+        @yield('extra_scripts')
 </html>

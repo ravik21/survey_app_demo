@@ -34,6 +34,6 @@ class DefaultController extends Controller
           ], ['section_question_option_id' => $sectionQuestionOptionId]);
         }
 
-        return redirect('/dashboard');
+        return redirect('/take-survey');
     }
 }
