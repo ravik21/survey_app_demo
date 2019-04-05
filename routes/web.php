@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/login-via/{site}', 'Social\DefaultController@redirectToProvider');
+Route::get('/login-via/{site}/callback', 'Social\DefaultController@handleProviderCallback');
+
+Auth::routes();
+
+
+Route::middleware('auth')->group(function(){
+    Route::get('/', 'Dashboard\DefaultController@index');
+    Route::prefix('dashboard')->group(function(){
+      Route::get('/', 'Dashboard\DefaultController@index');
+
+      include('profile.php');
+    });
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
