@@ -7,11 +7,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\UserProfile;
 use App\Models\SectionQuestionAnswer;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 use Hash, Auth;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use EntrustUserTrait;
 
     /**
     * The attributes that are mass assignable.
@@ -19,7 +21,7 @@ class User extends Authenticatable
     * @var array
     */
     protected $fillable = [
-        'name', 'email', 'password', 'last_activity', 'locked', 'username', 'taken_survey'
+        'name', 'email', 'password', 'last_activity', 'taken_survey'
     ];
 
     /**

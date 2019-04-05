@@ -23,12 +23,6 @@
         <div class="row">
           <div class="col-lg-6">
             <div class="form-group">
-              <label class="form-control-label" for="input-username">{{ __('Username') }}</label>
-              <input type="text" name="username" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="{{ ($user) ? $user->username : '' }}">
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="form-group">
               <label class="form-control-label" for="input-email">{{ __('Email address') }}</label>
               <input type="email" name="email" id="input-email" class="form-control form-control-alternative" placeholder="Email address" value="{{ ($user) ? $user->email : '' }}">
             </div>
@@ -47,15 +41,7 @@
                 @endif
               </div>
           </div>
-          
-          <div class="col-lg-6">
-            <div class="form-group">
-              <label class="form-control-label" for="input-age">{{ __('Age') }}</label>
-              <input type="text" name="age" id="input-age" class="form-control form-control-alternative" placeholder="Age" value="{{ ($user) ? $user->age : '' }}">
-            </div>
-          </div>
         </div>
-
         <div class="text-center">
             <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
         </div>

@@ -64,8 +64,9 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $user->last_activity = Carbon::now();
-            $user->save();
+            if(!$user->taken_survey) {
+              return redirect('/take-survey');
+            }
             return redirect('/');
         } else {
             return redirect('/login')->with('fail', 'invalid credentials');;

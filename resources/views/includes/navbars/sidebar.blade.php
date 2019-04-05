@@ -56,11 +56,13 @@
                         <i class="ni ni-single-02 text-yellow"></i> {{ __('User profile') }}
                     </a>
                 </li>
+                @role('admin')
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('dashboard/users')}}">
                         <i class="ni ni-bullet-list-67 text-red"></i> {{ __('User Management') }}
                     </a>
                 </li>
+                @endrole
                 @auth()
                 <li class="nav-item">
                   <a class="nav-link" href=""

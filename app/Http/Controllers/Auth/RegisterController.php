@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Role;
 
 class RegisterController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/taken-survey';
 
     /**
      * Create a new controller instance.
@@ -49,7 +50,6 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username'  => ['string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'  => ['required', 'string', 'min:6', 'confirmed'],
             'agree'     => 'required'
@@ -64,12 +64,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'username'  => isset($data['username']) ? $data['username'] : '',
+        $user = User::create([
             'name'      => isset($data['name']) ? $data['name'] : '',
             'email'     => $data['email'],
             'password'  => Hash::make($data['password']),
-            // 'taken_survey'  => 0
+            'taken_survey'  => 0
         ]);
+
+        if ($user) {
+            $roleUser = Role::where('name','user')->first();
+            $user->attachRole($roleUser);
+        }
+
+        return $user;
     }
 }

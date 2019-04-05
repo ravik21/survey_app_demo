@@ -21,6 +21,10 @@ class DefaultController extends Controller
 
         $section        = Section::whereNotIn('id', $sectionAnswered)->first();
 
+        if(!$section) {
+          $user->update(['taken_survey' => 1]);
+        }
+
         return view('survey.index', ['section' => $section]);
     }
 
