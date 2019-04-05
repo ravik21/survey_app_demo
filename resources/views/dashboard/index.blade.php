@@ -36,7 +36,7 @@
     @foreach ($data as $d)
       questions.push("{{ $d['question_id'] }}");
       answers.push("{{ $d['answers'] }}");
-      titles["{{ $d['question_id'] }}"] = "{{ $d['question_title'] }}";
+      titles["Question: {{ $d['question_id'] }}"] = "{{ $d['question_title'] }}";
     @endforeach
   @endif
 
@@ -55,8 +55,8 @@
   					}],
   					xAxes: [{
   						ticks: {
-  							callback: (value) => value,
-  						}
+  							callback: (value) => 'Question: ' + value,
+              }
   					}]
   				},
   				tooltips: {
