@@ -28,11 +28,6 @@
           @include('includes.navbars.navbar')
           @yield('content')
         </div>
-        @guest()
-        @include('includes.footers.guest')
-        @endguest
-
-
         <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
         <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
         @yield('extra_scripts')

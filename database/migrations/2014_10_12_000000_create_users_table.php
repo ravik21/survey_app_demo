@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
           $table->string('email')->unique();
           $table->bigInteger('social_id')->nullable();
           $table->string('password')->nullable();
+          $table->integer('taken_survey')->default(0);
           $table->rememberToken();
           $table->timestamps();
         });
