@@ -21,7 +21,8 @@ class DefaultController extends Controller
             $options = SectionQuestionAnswer::where('section_question_id', $question->id)->pluck('section_question_option_id');
             $answers = SectionQuestionOption::whereIn('id', $options)->sum('value');
             $data[] = [
-                'question' => $question->id,
+                'question_id' => $question->id,
+                'question_title' => $question->name,
                 'answers' => $answers
             ];
         }
